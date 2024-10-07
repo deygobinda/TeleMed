@@ -25,7 +25,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [])
 
-  const login = async (email: string, password: string, role: 'patient' | 'doctor') => {
+  // const login = async (email: string, password: string, role: 'patient' | 'doctor') => {
+  //   // TODO: Implement actual login logic with API call
+  //   const mockUser: User = { id: '1', name: 'John Doe', role: role }
+  //   setUser(mockUser)
+  //   localStorage.setItem('user', JSON.stringify(mockUser))
+  // }
+  const login = async (role: 'patient' | 'doctor') => {
     // TODO: Implement actual login logic with API call
     const mockUser: User = { id: '1', name: 'John Doe', role: role }
     setUser(mockUser)
