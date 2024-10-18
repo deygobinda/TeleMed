@@ -8,6 +8,9 @@ import Unauthorized from './components/auth/Unauthorized'
 import DoctorSelection from './components/DoctorSelection'
 import PatientDashboard from './components/PatientDashboard'
 import DoctorDashboard from './components/DoctorDashboard'
+import Appointments from './components/Appointments'
+import AppointmentDetail from './components/AppointmentDetail'
+import VideoCall from './components/VideoCall.tsx'
 
 export default function App() {
   return (
@@ -30,6 +33,18 @@ export default function App() {
             <Route
               path="/doctor-dashboard"
               element={<PrivateRoute element={<DoctorDashboard />} allowedRoles={['doctor']} />}
+            />
+            <Route
+              path="/appointments"
+              element={<PrivateRoute element={<Appointments />} allowedRoles={['patient']} />}
+            />
+            <Route
+              path="/appointment/:id"
+              element={<PrivateRoute element={<AppointmentDetail />} allowedRoles={['patient']} />}
+            />
+            <Route
+              path="/video-call/:id"
+              element={<PrivateRoute element={<VideoCall />} allowedRoles={['patient', 'doctor']} />}
             />
           </Routes>
         </div>

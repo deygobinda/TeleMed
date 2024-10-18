@@ -15,13 +15,15 @@ export default function PatientDashboard() {
           <CardDescription>Welcome, {user?.name}!</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button className="w-full" variant="default">
-            <Calendar className="mr-2 h-4 w-4" /> View Upcoming Appointments
-          </Button>
-          <Link to={"/select-doctor"}>
-          <Button className="w-full" variant="secondary">
-            <PlusCircle className="mr-2 h-4 w-4" /> Book New Appointment
-          </Button>
+          <Link to="/appointments" className="w-full">
+            <Button className="w-full" variant="default">
+              <Calendar className="mr-2 h-4 w-4" /> View Upcoming Appointments
+            </Button>
+          </Link>
+          <Link to="/select-doctor" className="w-full">
+            <Button className="w-full" variant="secondary">
+              <PlusCircle className="mr-2 h-4 w-4" /> Book New Appointment
+            </Button>
           </Link>
           <Button className="w-full" variant="destructive" onClick={logout}>
             <LogOut className="mr-2 h-4 w-4" /> Logout
