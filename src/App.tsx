@@ -10,7 +10,10 @@ import PatientDashboard from './components/PatientDashboard'
 import DoctorDashboard from './components/DoctorDashboard'
 import Appointments from './components/Appointments'
 import AppointmentDetail from './components/AppointmentDetail'
-import VideoCall from './components/VideoCall.tsx'
+import VideoCall from './components/VideoCall'
+import DoctorAppointments from './components/DoctorAppointments'
+import DoctorAvailability from './components/DoctorAvailability'
+import DoctorPrescriptions from './components/DoctorPrescriptions'
 
 export default function App() {
   return (
@@ -22,6 +25,8 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/unauthorized" element={<Unauthorized />} />
+            
+            {/* Patient Routes */}
             <Route
               path="/select-doctor"
               element={<PrivateRoute element={<DoctorSelection />} allowedRoles={['patient']} />}
@@ -31,10 +36,6 @@ export default function App() {
               element={<PrivateRoute element={<PatientDashboard />} allowedRoles={['patient']} />}
             />
             <Route
-              path="/doctor-dashboard"
-              element={<PrivateRoute element={<DoctorDashboard />} allowedRoles={['doctor']} />}
-            />
-            <Route
               path="/appointments"
               element={<PrivateRoute element={<Appointments />} allowedRoles={['patient']} />}
             />
@@ -42,6 +43,26 @@ export default function App() {
               path="/appointment/:id"
               element={<PrivateRoute element={<AppointmentDetail />} allowedRoles={['patient']} />}
             />
+
+            {/* Doctor Routes */}
+            <Route
+              path="/doctor-dashboard"
+              element={<PrivateRoute element={<DoctorDashboard />} allowedRoles={['doctor']} />}
+            />
+            <Route
+              path="/doctor/appointments"
+              element={<PrivateRoute element={<DoctorAppointments />} allowedRoles={['doctor']} />}
+            />
+            <Route
+              path="/doctor/availability"
+              element={<PrivateRoute element={<DoctorAvailability />} allowedRoles={['doctor']} />}
+            />
+            <Route
+              path="/doctor/prescriptions"
+              element={<PrivateRoute element={<DoctorPrescriptions />} allowedRoles={['doctor']} />}
+            />
+
+            {/* Shared Routes */}
             <Route
               path="/video-call/:id"
               element={<PrivateRoute element={<VideoCall />} allowedRoles={['patient', 'doctor']} />}

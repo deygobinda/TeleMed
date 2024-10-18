@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useAuth } from "../hooks/useAuth"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
@@ -14,15 +15,21 @@ export default function DoctorDashboard() {
           <CardDescription>Welcome, Dr. {user?.name}!</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
-          <Button className="w-full" variant="default">
-            <Calendar className="mr-2 h-4 w-4" /> View Upcoming Appointments
-          </Button>
-          <Button className="w-full" variant="secondary">
-            <Clock className="mr-2 h-4 w-4" /> Manage Availability
-          </Button>
-          <Button className="w-full" variant="outline">
-            <FileText className="mr-2 h-4 w-4" /> Upload Prescriptions
-          </Button>
+          <Link to="/doctor/appointments" className="w-full">
+            <Button className="w-full" variant="default">
+              <Calendar className="mr-2 h-4 w-4" /> View Upcoming Appointments
+            </Button>
+          </Link>
+          <Link to="/doctor/availability" className="w-full">
+            <Button className="w-full" variant="secondary">
+              <Clock className="mr-2 h-4 w-4" /> Manage Availability
+            </Button>
+          </Link>
+          <Link to="/doctor/prescriptions" className="w-full">
+            <Button className="w-full" variant="outline">
+              <FileText className="mr-2 h-4 w-4" /> Upload Prescriptions
+            </Button>
+          </Link>
           <Button className="w-full" variant="destructive" onClick={logout}>
             <LogOut className="mr-2 h-4 w-4" /> Logout
           </Button>
